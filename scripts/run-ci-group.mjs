@@ -60,6 +60,12 @@ const GROUPS = {
     ["verify-thinking-preview", ['node', '--import', 'tsx/esm', 'scripts/verify-thinking-preview.tsx']],
     ["repro-thinking-stream-fold", ['node', '--import', 'tsx/esm', 'scripts/repro-thinking-stream-fold.tsx']],
     ["verify-streaming-markdown-spacing", ['node', '--import', 'tsx/esm', 'scripts/verify-streaming-markdown-spacing.tsx']],
+    ['verify-text-measure-cache', ['node', '--import', 'tsx/esm', 'scripts/verify-text-measure-cache.ts']],
+    ['verify-text-wrap-geometry', ['node', '--import', 'tsx/esm', 'scripts/verify-text-wrap-geometry.tsx']],
+    ['verify-streaming-markdown-blocks', ['node', '--import', 'tsx/esm', 'scripts/verify-streaming-markdown-blocks.tsx']],
+    ['verify-text-paint-budget', ['node', '--import', 'tsx/esm', 'scripts/verify-text-paint-budget.tsx']],
+    ['verify-text-viewport-paint', ['node', '--import', 'tsx/esm', 'scripts/verify-text-viewport-paint.ts']],
+    ['verify-tool-history-window', ['node', '--import', 'tsx/esm', 'scripts/verify-tool-history-window.tsx']],
 // 流式平滑揭示回归（dsh-tui.smoothStreaming）：调度器步进/游标生命周期
 // （追加保游标、替换 snap、追平不再重打）+ MessageList 集成（流式行/
 // 非流式 fresh 行渐进揭示、回放行直出、开关关闭直出）+ 组件契约
@@ -92,6 +98,9 @@ const GROUPS = {
 // shrunk 帧冻结的旧 scrollTop 与失准的 clamp 边界越过内容底，整屏裁剪
 // 成"只剩输入框"（Orca pane 宽度抖动的现场取证复现）。
     ["repro-resize-blank", ['node', '--import', 'tsx/esm', 'scripts/repro-resize-blank.tsx']],
+// Windows Terminal 最大化后的同尺寸 resize 必须修复丢失的静态格（#891），
+// 不提前擦屏、不打断外部编辑器；inline 与非 ConPTY 路径继续保持安静。
+    ['verify-conpty-surface-resize', ['node', '--import', 'tsx/esm', 'scripts/verify-conpty-surface-resize.tsx']],
 // 空转重渲染风暴回归（issue #433）：长历史 + 30ms 空转 commit 风暴下
 // renderScrollTop / 画面 / 输入框行数必须逐帧恒定，几何不震荡。
     ["repro-idle-oscillation", ['node', '--import', 'tsx/esm', 'scripts/repro-idle-oscillation.tsx']],
@@ -107,6 +116,9 @@ const GROUPS = {
 // 滚动窗口与 shrink 边界。measure-depth 需生产模式（minified #185）。
     ["verify-message-measure-depth", ['node', '--import', 'tsx/esm', 'scripts/verify-message-measure-depth.tsx']],
     ["verify-scroll", ['node', 'scripts/verify-scroll.mjs']],
+// 长会话冷/热窗口跳转、绘制边界发布与回底挂载预算（不能等滚轮救活）。
+    ['verify-scroll-jumps', ['node', '--import', 'tsx/esm', 'scripts/verify-scroll-jumps.tsx']],
+    ['verify-scroll-jumps-narrow', ['node', '--import', 'tsx/esm', 'scripts/verify-scroll-jumps.tsx'], { DSH_TEST_COLUMNS: '60' }],
 // Windows Terminal 全屏拖选+滚轮回归：长 User 气泡的 selection overlay
 // 会污染上一帧；污染帧不得进入 DECSTBM/shiftRows 硬件滚动，否则带背景
 // 的旧像素被物理搬移后偶发重复/错位。A/B 同轨迹断言终态画面一致。
@@ -632,6 +644,12 @@ const GROUPS = {
 // 允许、tool/result 落定后孪生弹出/渲染时徽标必须补上（弹出时 + 读取
 // 当前条时重跑活跃判定）。
     ["verify-approval-source-badge", ['node', '--import', 'tsx/esm', 'scripts/verify-approval-source-badge.tsx']],
+// 单行超长文本折叠回归（用户反馈：单行超长文本默认整行渲染，铺成上千视觉
+// 行拖慢转录）：折叠阈值常量 1000 字符、行边界不被改写、短文本零分配快路径；
+// 真实 MessageList 下 user 消息 / assistant 正文 / 工具卡标题（单行超长命令）
+// 与正文都出折叠标记且裁掉的尾巴不在屏上；Ctrl+O 逃生门恢复原文；
+// reasoning 行不折叠（自带三行预览）。
+    ["verify-long-line-fold", ['node', '--import', 'tsx/esm', 'scripts/verify-long-line-fold.tsx']],
   ],
   'flaky-observation': [
 // resize 时间稳定性（借鉴 Codex 的 resize 漂移维度）：落定后不得

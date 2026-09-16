@@ -34,7 +34,7 @@ export const TIPS: readonly Tip[] = [
     group: 'keys',
     zh: '空输入双击 Esc = 时间回溯，可改完重发',
     en: 'Double-Esc on empty input rewinds time; edit and resend',
-    ru: 'Двойное Esc на пустом вводе отмотает время: отредактируйте и отправьте снова',
+    ru: 'Двойное Esc на пустом вводе — отмотка и повтор',
   },
   {
     id: 'keys-esc-levels',
@@ -55,7 +55,7 @@ export const TIPS: readonly Tip[] = [
     group: 'keys',
     zh: 'Ctrl+R 搜索输入历史，重复按跳下一匹配',
     en: 'Ctrl+R searches input history; press again for next match',
-    ru: 'Ctrl+R — поиск по истории ввода; нажимайте снова для следующих совпадений',
+    ru: 'Ctrl+R — поиск по истории ввода, повтор — следующее совпадение',
   },
   {
     id: 'keys-ctrl-t',
@@ -139,14 +139,14 @@ export const TIPS: readonly Tip[] = [
     group: 'keys',
     zh: 'Ctrl+A 子代理面板：Enter 看详情 · X 中断 · Esc 关',
     en: 'Ctrl+A opens the subagent dashboard; Enter details, X interrupt, Esc close',
-    ru: 'Ctrl+A открывает панель субагентов: Enter — детали, X — прервать, Esc — закрыть',
+    ru: 'Ctrl+A — панель субагентов: Enter — детали, X — прервать',
   },
   {
     id: 'keys-edit-keys',
     group: 'keys',
     zh: 'Ctrl+U/K/W 快速删行首/行尾/前一词',
     en: 'Ctrl+U/K/W delete to line start, end, or previous word',
-    ru: 'Ctrl+U/K/W удаляют текст до начала строки, до конца или до предыдущего слова',
+    ru: 'Ctrl+U/K/W — удалить до начала, конца строки или предыдущего слова',
   },
   {
     id: 'keys-shift-tab',
@@ -174,7 +174,7 @@ export const TIPS: readonly Tip[] = [
     group: 'keys',
     zh: 'Ctrl+V 或 Alt+V 粘贴文本、文件路径或图片附件；/settings 可改快捷键',
     en: 'Ctrl+V or Alt+V pastes text, file paths, or image attachments; remappable in /settings',
-    ru: 'Ctrl+V или Alt+V вставляют текст, пути файлов, изображения; переназначение в /settings',
+    ru: 'Ctrl+V или Alt+V — вставка текста, путей, картинок; переназначается',
   },
   {
     id: 'keys-slash-search',
@@ -188,14 +188,14 @@ export const TIPS: readonly Tip[] = [
     group: 'keys',
     zh: '工具卡/thinking/摘要点击展开，子代理卡点击看详情；输入框点击定位光标',
     en: 'Click tool/thinking/summary rows to fold; subagent cards open detail; click input to move caret',
-    ru: 'Клик по строке инструмента/мысли сворачивает её; карточка субагента — детали; клик во вводе — каретка',
+    ru: 'Клик по строке инструмента/мысли сворачивает, по вводу — каретка',
   },
   {
     id: 'keys-mouse-scenes',
     group: 'keys',
     zh: '轨迹与 /settings 支持鼠标：行点击跳转/编辑，滚轮移动光标或焦点',
     en: 'Trajectory and /settings take the mouse: row clicks jump/edit, the wheel moves cursor or focus',
-    ru: 'Траектория и /settings понимают мышь: клики — переход/правка, колесо — курсор или фокус',
+    ru: 'Траектория и /settings работают мышью: клик — переход/правка',
   },
 
   // ── 命令 ──────────────────────────────────────────────────
@@ -253,14 +253,14 @@ export const TIPS: readonly Tip[] = [
     group: 'commands',
     zh: '/recap 总结近期活动并建议标题，a 键应用',
     en: '/recap summarizes recent activity and suggests a title; a applies it',
-    ru: '/recap подводит итог недавней активности и предлагает заголовок; a применяет',
+    ru: '/recap — итог последних событий и заголовок; a применяет',
   },
   {
     id: 'cmd-jobs',
     group: 'commands',
     zh: '/jobs 面板实时跟踪后台任务：状态、运行时长、退出码，k 键停止',
     en: '/jobs tracks background jobs live: status, elapsed time, exit code; k kills',
-    ru: '/jobs следит за фоновыми задачами: статус, время, код выхода; k — остановить',
+    ru: '/jobs — фоновые задачи: статус, время, код выхода; k — остановить',
   },
   {
     id: 'cmd-status',
@@ -309,7 +309,7 @@ export const TIPS: readonly Tip[] = [
     group: 'commands',
     zh: '/reload 重读偏好文件并即时应用（主题/语言/预设/模型/动画）',
     en: '/reload re-reads pref files (theme/lang/preset/model/activity) and applies live',
-    ru: '/reload перечитывает настройки (тема/язык/пресет/модель/анимация) и применяет сразу',
+    ru: '/reload перечитывает настройки (тема/язык/модель) без рестарта',
   },
   {
     id: 'cmd-model',
@@ -337,7 +337,7 @@ export const TIPS: readonly Tip[] = [
     group: 'commands',
     zh: '/color 会话强调色：无参调色板 / <名> 直设 / reset 清除，resume 后仍在',
     en: '/color sets a per-session accent: bare = palette, <name> direct, reset clears; survives resume',
-    ru: '/color — акцент сессии: без аргумента палитра, <имя> — выбрать, reset — сброс; сохраняется при /resume',
+    ru: '/color — акцент сессии: без аргумента палитра, <имя> — выбрать',
   },
   {
     id: 'cmd-tokens',
@@ -365,7 +365,7 @@ export const TIPS: readonly Tip[] = [
     group: 'commands',
     zh: '/settings 自定义底栏：开关 TPS/轨迹条/上下文条等',
     en: '/settings customizes the status bar: TPS, trajectory, context bars',
-    ru: '/settings настраивает строку состояния: TPS, траекторию, индикатор контекста',
+    ru: '/settings настраивает статус-бар: TPS, траектория, контекст',
   },
   {
     id: 'cmd-workspace',
@@ -458,7 +458,7 @@ export const TIPS: readonly Tip[] = [
     group: 'workflow',
     zh: '模型工作时：Enter 加塞、Tab 排队、Ctrl+Enter 打断',
     en: 'While working: Enter steers, Tab queues, Ctrl+Enter interrupts',
-    ru: 'Во время работы: Enter направляет агента, Tab — в очередь, Ctrl+Enter — прервать',
+    ru: 'Работает агент: Enter — направить, Tab — очередь, Ctrl+Enter — стоп',
   },
   {
     id: 'flow-alt-up',
@@ -479,7 +479,7 @@ export const TIPS: readonly Tip[] = [
     group: 'workflow',
     zh: '/tree 打开会话分叉树：悬停预览、点击回退/分叉/切分支',
     en: '/tree opens the session tree: hover to preview, click to rewind/fork/adopt',
-    ru: '/tree — дерево сессий: наведите для предпросмотра, клик — отмотка/форк/присоединение',
+    ru: '/tree — дерево сессий: наведение — предпросмотр, клик — отмотка/форк',
   },
   {
     id: 'flow-tree-search',
@@ -535,7 +535,7 @@ export const TIPS: readonly Tip[] = [
     group: 'workflow',
     zh: '问卷选项行直接打字 = 选项 + 自定义文本一起提交',
     en: 'Typing on a question row submits option + custom text',
-    ru: 'Набор текста в строке вопроса отправляет вариант вместе со своим текстом',
+    ru: 'Текст в строке вопроса отправляет вариант + свой комментарий',
   },
   {
     id: 'flow-plan-review',
@@ -563,14 +563,14 @@ export const TIPS: readonly Tip[] = [
     group: 'workflow',
     zh: '打开会话自动出回顾摘要，点击回顾行展开详情',
     en: 'Opening a session auto-shows a recap; click the row to expand',
-    ru: 'При открытии сессии сразу показывается сводка; клик по строке разворачивает',
+    ru: 'При открытии сессии показывается сводка; клик разворачивает',
   },
   {
     id: 'flow-file-actions',
     group: 'workflow',
     zh: '全屏模式下点击转录中的文件路径：打开/定位/复制',
     en: 'Click a file path in the transcript (fullscreen): open, reveal, copy',
-    ru: 'Клик по пути файла в журнале (полный экран): открыть, показать, скопировать',
+    ru: 'Клик по пути файла (полный экран): открыть, показать, копировать',
   },
   {
     id: 'flow-btw-copy',
@@ -586,14 +586,14 @@ export const TIPS: readonly Tip[] = [
     group: 'display',
     zh: '底栏 TPS、轨迹条、上下文条默认关，/settings 里打开',
     en: 'TPS, trajectory, context bars are off by default — enable in /settings',
-    ru: 'TPS, траектория и индикатор контекста по умолчанию выключены — включите в /settings',
+    ru: 'TPS, траектория и контекст-бары по умолчанию выключены — /settings',
   },
   {
     id: 'disp-statusbar-session-id',
     group: 'display',
     zh: '底栏可显示短会话 ID（# 前 8 位），与日志文件名对应，/settings 里开',
     en: 'Footer can show the short session id (# + 8 chars, matches the log filename) — enable in /settings',
-    ru: 'В футере можно включить короткий id сессии (# + 8 символов, как в имени лога) — /settings',
+    ru: 'Короткий id сессии (# + 8 символов) в футере — включите в /settings',
   },
   {
     id: 'disp-statusbar-title',
@@ -607,28 +607,28 @@ export const TIPS: readonly Tip[] = [
     group: 'display',
     zh: '底栏字段逐项开关：token 总量、git 分支、模式、活动摘要…… /settings 里配',
     en: 'Footer fields are per-field switches: token totals, git branch, mode, activity — set in /settings',
-    ru: 'Поля футера включаются по отдельности: токены, ветка git, режим, активность — в /settings',
+    ru: 'Поля футера — переключатели: токены, ветка git, режим, активность',
   },
   {
     id: 'disp-statusbar-compact',
     group: 'display',
     zh: '底栏 compact 开=单行收纳；关=左右分组（指标在左、位置在右）',
     en: 'Footer compact on = one merged line; off = metrics left, location right',
-    ru: 'Компактный футер — одна общая строка; иначе метрики слева, расположение справа',
+    ru: 'Компактный футер — одна строка; иначе метрики и места отдельно',
   },
   {
     id: 'disp-statusbar-hint',
     group: 'display',
     zh: "空闲时 '? 查看快捷键' 常驻提示也是底栏开关（shortcutHint）",
     en: 'The idle "? for shortcuts" reminder is itself a footer switch (shortcutHint)',
-    ru: 'Напоминание «? — горячие клавиши» в простое — тоже переключатель футера (shortcutHint)',
+    ru: 'Напоминание «? — горячие клавиши» — тоже переключатель футера',
   },
   {
     id: 'disp-cost',
     group: 'display',
     zh: '底栏花费估算 ≈¥ 峰/谷：仅官方 DeepSeek 显示，/settings 可关',
     en: 'Footer cost estimate (peak/idle) shows only for official DeepSeek; toggle in /settings',
-    ru: 'Оценка стоимости в футере (пик/простой) только для официального DeepSeek; вкл. в /settings',
+    ru: 'Оценка стоимости в футере — для DeepSeek; вкл. в /settings',
   },
   {
     id: 'disp-context-warn',
@@ -656,7 +656,7 @@ export const TIPS: readonly Tip[] = [
     group: 'display',
     zh: '主题：~/.dsh-tui/themes/<名>.json 或 npm 插件注册，即时热切换',
     en: 'Themes: ~/.dsh-tui/themes/<name>.json or npm plugin registration, hot-swappable',
-    ru: 'Темы: ~/.dsh-tui/themes/<имя>.json или регистрация npm-плагином; переключение на лету',
+    ru: 'Темы: ~/.dsh-tui/themes/<имя>.json или npm-плагин; смена на лету',
   },
   {
     id: 'disp-theme-status',
@@ -668,9 +668,9 @@ export const TIPS: readonly Tip[] = [
   {
     id: 'disp-lang',
     group: 'display',
-    zh: '/lang zh|en 界面语言即时切换',
-    en: '/lang zh|en switches UI language instantly',
-    ru: '/lang zh|en мгновенно переключает язык интерфейса',
+    zh: '/lang zh|en|ru 界面语言即时切换',
+    en: '/lang zh|en|ru switches UI language instantly',
+    ru: '/lang zh|en|ru мгновенно переключает язык интерфейса',
   },
   {
     id: 'disp-activity',
@@ -698,7 +698,7 @@ export const TIPS: readonly Tip[] = [
     group: 'display',
     zh: '/settings 里 thinkingFold：preview 折叠 / full 全展开',
     en: 'In /settings, thinkingFold: preview folds, full expands',
-    ru: 'В /settings thinkingFold: preview сворачивает размышления, full разворачивает',
+    ru: 'В /settings thinkingFold: preview сворачивает, full разворачивает',
   },
   {
     id: 'disp-tool-bg',
@@ -719,14 +719,14 @@ export const TIPS: readonly Tip[] = [
     group: 'display',
     zh: '/settings → shortcuts 自定义快捷键，改完立即生效',
     en: 'Remap shortcuts in /settings → shortcuts; changes apply instantly',
-    ru: 'Переназначение горячих клавиш: /settings → shortcuts; применяется сразу',
+    ru: 'Переназначение клавиш: /settings → shortcuts; применяется сразу',
   },
   {
     id: 'disp-hover-footer',
     group: 'display',
     zh: '悬停底栏字段：ctx 原地变等宽压力条，明细走常驻底行，布局不动',
     en: 'Hover footer fields: ctx morphs in place into a same-width bar, details on a stable line',
-    ru: 'Наведение на поля футера: ctx превращается в индикатор той же ширины, детали — отдельной строкой',
+    ru: 'Наведение на поля футера: ctx — индикатор, детали — строкой ниже',
   },
   {
     id: 'disp-wheel-sel',
@@ -763,14 +763,14 @@ export const TIPS: readonly Tip[] = [
     group: 'pitfalls',
     zh: '审批条 Esc=拒绝；问卷第 2 题起 Esc=上一题，Ctrl+C=取消整批',
     en: 'Esc rejects approvals; question batches use Esc for previous and Ctrl+C to cancel',
-    ru: 'Esc отклоняет одобрения; в пакете вопросов Esc — предыдущий, Ctrl+C — отмена',
+    ru: 'Esc отклоняет одобрения; в вопросах Esc — назад, Ctrl+C — отмена',
   },
   {
     id: 'pit-ctrl-c',
     group: 'pitfalls',
     zh: 'Ctrl+C 工作时先中断；中断卡住再按强制退出；空闲连按两次退出',
     en: 'Ctrl+C interrupts; press again if it stalls, double-tap when idle',
-    ru: 'Ctrl+C прерывает ход; если зависло — нажмите ещё раз, в простое — дважды',
+    ru: 'Ctrl+C прерывает ход; зависло — ещё раз, в простое — дважды',
   },
   {
     id: 'pit-unknown-cmd',
@@ -798,7 +798,7 @@ export const TIPS: readonly Tip[] = [
     group: 'pitfalls',
     zh: '/reload 不重读 cordis.yml 与全屏布局，改它们用 /restart',
     en: '/reload skips cordis.yml and fullscreen layout; use /restart for those',
-    ru: '/reload не трогает cordis.yml и полноэкранный режим — для этого нужен /restart',
+    ru: '/reload не трогает cordis.yml и полноэкранный режим — нужен /restart',
   },
   {
     id: 'pit-restart-busy',
@@ -812,14 +812,14 @@ export const TIPS: readonly Tip[] = [
     group: 'pitfalls',
     zh: '提示版本错位时，按提示 npm install -g 对齐启动器',
     en: 'On version skew, follow the npm install -g hint to align the launcher',
-    ru: 'При расхождении версий выполните подсказку npm install -g, выровняв запуск',
+    ru: 'При расхождении версий — выполните подсказку npm install -g',
   },
   {
     id: 'pit-drift',
     group: 'pitfalls',
     zh: 'logo ⚠ 提示 dsh 版本不符时，按提示 npm i -g @deepseek-ai/dsh 对齐',
     en: 'When the logo warns about dsh versions, follow the npm i -g @deepseek-ai/dsh hint',
-    ru: 'Если логотип предупреждает о версиях dsh — выполните подсказку npm i -g @deepseek-ai/dsh',
+    ru: 'Предупреждение о версиях dsh — установите npm i -g @deepseek-ai/dsh',
   },
   {
     id: 'pit-mac',
@@ -847,7 +847,7 @@ export const TIPS: readonly Tip[] = [
     group: 'pitfalls',
     zh: '主界面鼠标需开 fullscreen；轨迹/resume 整屏页两种模式都带鼠标',
     en: 'Main-chat mouse needs fullscreen; full-page screens (trajectory, /resume) have it in both modes',
-    ru: 'Мышь в основном чате — только полный экран; полностраничные сцены (траектория, /resume) — в любом режиме',
+    ru: 'Чат: мышь только на полном экране. Полные страницы: мышь всегда',
   },
   {
     id: 'pit-pnpm',
@@ -861,7 +861,7 @@ export const TIPS: readonly Tip[] = [
     group: 'pitfalls',
     zh: '需要交互 TTY；推荐 Windows Terminal ≥110 列',
     en: 'An interactive TTY is required; try Windows Terminal ≥110 cols',
-    ru: 'Нужен интерактивный TTY; в Windows попробуйте Terminal шириной ≥110 колонок',
+    ru: 'Нужен интерактивный TTY; Windows Terminal — ширина ≥110 колонок',
   },
 ]
 

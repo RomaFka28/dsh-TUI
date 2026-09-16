@@ -25,7 +25,7 @@ import xtermPkg from '@xterm/headless'
 import React from 'react'
 import { render, ThemeProvider, AlternateScreen } from '../lib/types/ui.js'
 import { SessionBrowser } from '../lib/types/screens/SessionBrowser.js'
-import { setLang } from '../lib/types/i18n.js'
+import { setLang, t as tr } from '../lib/types/i18n.js'
 import { stringWidth } from '../lib/types/ink/stringWidth.js'
 import { settle, settled, sleep } from './lib/term-test.mjs'
 
@@ -141,7 +141,7 @@ const KEYS = [
   ['深度', 'CJK query'],
 ]
 
-for (const lang of ['zh', 'en']) {
+for (const lang of ['zh', 'en', 'ru']) {
   setLang(lang)
   for (const [cols, rows] of SIZES) {
     const { stdout, stderr, stdin, term } = makeStreams(cols, rows)
@@ -230,6 +230,10 @@ for (const lang of ['zh', 'en']) {
       // Runs after the resize above, so the click column comes from the
       // CURRENT terminal width (term.cols), not the original SIZES entry.
       const currentCols = term.cols
+      // Menu labels come from the dictionary: the popup is locale-owned, so
+      // hardcoding one language's label would fail the other locales.
+      const openLabel = tr('resume-menu-open')
+      const deleteLabel = tr('resume-menu-delete')
       const firstRow = frame(term).findIndex(l => l.text.includes('❯'))
       stdin.write(`\x1b[<2;${currentCols - 2};${firstRow + 1}M\x1b[<2;${currentCols - 2};${firstRow + 1}m`)
       // Bounded poll, not a fixed sleep: unlike the layout invariants above
@@ -237,11 +241,11 @@ for (const lang of ['zh', 'en']) {
       // fine), the menu exists only on the NEW frame — a slow CI would
       // assert on a pre-menu frame and fail spuriously.
       await settle(
-        () => frame(term).some(l => l.text.includes('Open') || l.text.includes('打开')),
+        () => frame(term).some(l => l.text.includes(openLabel)),
         { timeoutMs: 1000 },
       )
       const lines = frame(term)
-      const openIdx = lines.findIndex(l => l.text.includes('Open') || l.text.includes('打开'))
+      const openIdx = lines.findIndex(l => l.text.includes(openLabel))
       check(
         `${lang} ${cols}x${rows} menu: right-click opens the popup at the pointer`,
         openIdx >= 0,
@@ -260,7 +264,7 @@ for (const lang of ['zh', 'en']) {
         `${lang} ${cols}x${rows} menu: every item fits above the bottom edge`,
         // Four items now (open/pin/rename/delete): the last one, Delete, must
         // still sit above the bottom edge of the clamped popup.
-        openIdx >= 0 && openIdx + 3 < lines.length && /Delete|删除/.test(lines[openIdx + 3]?.text ?? ''),
+        openIdx >= 0 && openIdx + 3 < lines.length && (lines[openIdx + 3]?.text ?? '').includes(deleteLabel),
         openIdx >= 0 ? JSON.stringify(lines.slice(openIdx, openIdx + 4)) : 'menu missing',
       )
       // Wide terminals (resized width ≥ 120) keep the directory rail. While
@@ -272,13 +276,13 @@ for (const lang of ['zh', 'en']) {
         if (foreignRow >= 0) {
           stdin.write(`\x1b[<0;15;${foreignRow + 1}M\x1b[<0;15;${foreignRow + 1}m`)
           const gone = await settled(
-            () => !frame(term).some(l => l.text.includes('Open') || l.text.includes('打开')),
+            () => !frame(term).some(l => l.text.includes(openLabel)),
             { timeoutMs: 1000 },
           )
           check(
             `${lang} ${cols}x${rows} menu: switching directory dismisses a menu whose session left`,
             gone,
-            frame(term).map(l => l.text).filter(t => t.includes('Open') || t.includes('打开')).slice(0, 2).join(' | '),
+            frame(term).map(l => l.text).filter(x => x.includes(openLabel)).slice(0, 2).join(' | '),
           )
         }
       }

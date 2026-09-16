@@ -667,7 +667,7 @@ export async function apply(ctx: Context, config: Config): Promise<void> {
         // No default on purpose: an unset `lang` keeps the field showing
         // the effective language (see the section's format below) and lets
         // cordis.yml / lang.json keep their precedence.
-        lang: Schema.union(['zh', 'en']),
+        lang: Schema.union(['zh', 'en', 'ru']),
         // Same no-default rule: unset keeps cordis.yml's `fullscreen`
         // decisive; set overrides it from the next boot on.
         fullscreen: Schema.boolean(),

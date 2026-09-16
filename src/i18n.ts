@@ -586,7 +586,7 @@ const dict = {
   // ── components/LogoV2.tsx ───────────────────────────────────────────
   'logo-tagline': { zh: '探索未至之境！', en: 'Explore the uncharted!' , ru: 'Исследуйте неизведанное!'},
   'logo-tip-prefix': { zh: '提示：', en: 'Tip: ' , ru: 'Совет: '},
-  'logo-tip-more': { zh: '更多技巧', en: 'more tips' , ru: 'больше советов'},
+  'logo-tip-more': { zh: '更多技巧', en: 'more tips' , ru: 'ещё'},
   'logo-effort-label': { zh: ' · {{tier}} effort', en: ' · {{tier}} effort', ru: ' · усилие: {{tier}}' },
   // Upstream-drift notice (merged one-liner under the tip; copy explains
   // the problem AND the fix — the command pins the validated line).
@@ -848,7 +848,7 @@ const dict = {
   // push its own tail off the bottom of the screen.
   'session-hint-list': { zh: '**Enter** 恢复 · ← 工作目录 · Tab 预览 · 右键菜单 · {{mod}}a 全部目录（{{projects}}） · {{mod}}s 子运行（{{runs}}） · {{mod}}b 本分支 · {{mod}}r 重命名 · {{mod}}p 固定 · {{mod}}d 删除 · {{mod}}x 清空壳 · Esc 退出', en: '**Enter** resume · ← directories · Tab preview · right-click menu · {{mod}}a all directories ({{projects}}) · {{mod}}s runs ({{runs}}) · {{mod}}b this branch · {{mod}}r rename · {{mod}}p pin · {{mod}}d delete · {{mod}}x clean · Esc exit' , ru: '**Enter** возобновить · ← каталоги · Tab предпросмотр · контекстное меню · {{mod}}a все каталоги ({{projects}}) · {{mod}}s запуски ({{runs}}) · {{mod}}b эта ветка · {{mod}}r переименовать · {{mod}}p закрепить · {{mod}}d удалить · {{mod}}x очистить · Esc выход'},
   'session-hint-list-mid': { zh: '**Enter** 恢复 · ← 工作目录 · Tab 预览 · 右键菜单 · {{mod}}a 全部目录 · {{mod}}s 子运行 · {{mod}}r 重命名 · {{mod}}p 固定 · {{mod}}d 删除 · Esc 退出', en: '**Enter** resume · ← directories · Tab preview · right-click menu · {{mod}}a all directories · {{mod}}s runs · {{mod}}r rename · {{mod}}p pin · {{mod}}d delete · Esc exit' , ru: '**Enter** возобновить · ← каталоги · Tab предпросмотр · контекстное меню · {{mod}}a все каталоги · {{mod}}s запуски · {{mod}}r переименовать · {{mod}}p закрепить · {{mod}}d удалить · Esc выход'},
-  'session-hint-list-short': { zh: '**Enter** 恢复 · {{mod}}p ★ · ← 目录 · Esc', en: '**Enter** resume · {{mod}}p ★ · ← dirs · Esc' , ru: '**Enter** возобновить · {{mod}}p ★ · ← каталоги · Esc'},
+  'session-hint-list-short': { zh: '**Enter** 恢复 · {{mod}}p ★ · ← 目录 · Esc', en: '**Enter** resume · {{mod}}p ★ · ← dirs · Esc' , ru: '**Enter** открыть · {{mod}}p ★ · ← папки · Esc'},
   'session-hint-workspaces': { zh: '**Enter/→** 查看会话 · ↑/↓ 选择 · {{mod}}a 全部目录 · Esc 返回', en: '**Enter/→** view sessions · ↑/↓ choose · {{mod}}a all directories · Esc back' , ru: '**Enter/→** просмотр сессий · ↑/↓ выбрать · {{mod}}a все каталоги · Esc назад'},
   'session-hint-workspaces-short': { zh: '**Enter/→** 查看 · Esc', en: '**Enter/→** view · Esc' , ru: '**Enter/→** просмотр · Esc'},
 

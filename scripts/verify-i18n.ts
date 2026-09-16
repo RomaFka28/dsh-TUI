@@ -60,7 +60,8 @@ const singleBrace = /(?<!\{)\{(\w+)\}(?!\})/
 for (const [key, entry] of Object.entries(i18nDict)) {
   if (entry.zh === undefined) fail(`${key}: 缺 zh`)
   if (entry.en === undefined && !key.startsWith('cmd-desc-')) fail(`${key}: 缺 en`)
-  for (const lang of ['zh', 'en'] as const) {
+  if (entry.ru === undefined) fail(`${key}: 缺 ru`)
+  for (const lang of ['zh', 'en', 'ru'] as const) {
     for (const form of forms(entry[lang])) {
       const m = singleBrace.exec(form)
       if (m) fail(`${key}.${lang}: 单花括号 {${m[1]}}——t() 不替换，应为 {{${m[1]}}}`)
@@ -70,6 +71,13 @@ for (const [key, entry] of Object.entries(i18nDict)) {
   const en = placeholders(entry.en)
   if (entry.en !== undefined && !isSubset(zh, en) && !isSubset(en, zh)) {
     fail(`${key}: 占位符名不一致 zh={{${[...zh].join(',')}}} en={{${[...en].join(',')}}}`)
+  }
+  if (entry.ru !== undefined) {
+    const ru = placeholders(entry.ru)
+    const base = entry.en !== undefined ? en : zh
+    if (!isSubset(base, ru) && !isSubset(ru, base)) {
+      fail(`${key}: 占位符名不一致 base={{${[...base].join(',')}}} ru={{${[...ru].join(',')}}}`)
+    }
   }
 }
 

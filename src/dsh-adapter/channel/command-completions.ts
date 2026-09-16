@@ -36,7 +36,7 @@ export function createCommandCompletions(deps: {
       }
       if (path.length === 1 && path[0] === 'lang') return [
         { name: 'status', description: 'Show the current UI language', descriptionKey: 'sugg-status-desc' },
-        ...LANGS.map(lang => ({ name: lang, description: `Switch the UI language to ${lang}`, descriptionKey: lang === 'zh' ? 'sugg-lang-zh-desc' : 'sugg-lang-en-desc', ...(getLang() === lang ? { tag: 'current' } : {}) })),
+        ...LANGS.map(lang => ({ name: lang, description: `Switch the UI language to ${lang}`, descriptionKey: { zh: 'sugg-lang-zh-desc', en: 'sugg-lang-en-desc', ru: 'sugg-lang-ru-desc' }[lang], ...(getLang() === lang ? { tag: 'current' } : {}) })),
       ]
       if (path.length === 1 && path[0] === 'theme') return [
         { name: 'status', description: 'Show the current theme', descriptionKey: 'sugg-status-desc' },

@@ -1507,7 +1507,7 @@ export function Chat({
         setHelpOpen(false)
         dispatchOverlay({
           type: 'open',
-          overlay: { kind: 'lang', index: getLang() === 'zh' ? 0 : 1 },
+          overlay: { kind: 'lang', index: LANGS.indexOf(getLang()) },
         })
         return true
       }

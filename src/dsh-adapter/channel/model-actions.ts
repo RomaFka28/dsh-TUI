@@ -178,7 +178,7 @@ export function createModelActions(
   const listPresets = async (): Promise<readonly PresetOption[]> => {
     const presets = rosterOf(ctx)
     if (presets === undefined) return []
-    const localized = getLang() === 'en'
+    const localized = getLang() !== 'zh'
     try {
       return (await presets.list()).map(preset => ({ id: preset.id, ...(preset.name === undefined ? {} : { name: localized ? tOr(`preset-name-${preset.id}`, preset.name) : preset.name }), ...(preset.description === undefined ? {} : { description: localized ? tOr(`preset-desc-${preset.id}`, preset.description) : preset.description }), ...(preset.broken === undefined ? {} : { broken: preset.broken }), isDefault: preset.id === presets.defaultId }))
     } catch { return [] }

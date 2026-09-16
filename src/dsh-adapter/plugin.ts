@@ -35,7 +35,7 @@ import { ensureLegacySessionEventTypes, snapshotLiveSessionEvents } from './comp
 import { clearResumeTarget, resumeTargetFromArgv, writeResumeTarget } from '../sessionHistory.js'
 import { resolveSessionCwd } from '../utils/workspaceRoot.js'
 import { beginRestartAttempt, checkForTuiUpdate, installedTuiVersion, isBootDeadlockTarget, isStandaloneRuntime, isVersionNewer, logRestartEvent, resolveDshProfileName, resolveTuiUpdateTarget, restartTui, updateTuiAndRestart, writeHandoffNotice } from '../update.js'
-import { getLang, isLang, resolveStartupLang, setLang, t, writeLangPref } from '../i18n.js'
+import { getLang, isLang, resolveStartupLang, setLang, t, writeLangPref, type Lang } from '../i18n.js'
 import { DEFAULT_PAGE_MARGIN, DEFAULT_STATUS_BAR, applyPageMargin, isPageMarginMode, normalizePageMargin, normalizeScrollGutter, normalizeStatusBar, normalizeToolBackground, parsePageMarginSpec, type PageMarginSetting, type ScrollGutterMode, type StatusBarConfig, type ToolBackground } from '../tuiDisplayPrefs.js'
 import {
   draftComboConflicts,
@@ -683,7 +683,7 @@ export async function apply(ctx: Context, config: Config): Promise<void> {
     )
     type SettingsValue = {
       diffLayout?: 'auto' | 'split' | 'unified'
-      lang?: 'zh' | 'en'
+      lang?: Lang
       whale?: boolean
       whaleIdle?: boolean
       minimal?: boolean
@@ -959,6 +959,7 @@ export async function apply(ctx: Context, config: Config): Promise<void> {
           options: [
             { value: 'zh', label: '中文', descriptions: { zh: '中文' } },
             { value: 'en', label: 'English', descriptions: { zh: '英文' } },
+            { value: 'ru', label: 'Русский', descriptions: { zh: '俄文' } },
           ],
           format(value: unknown): string {
             // Unset in settings.yaml: show the effective UI language

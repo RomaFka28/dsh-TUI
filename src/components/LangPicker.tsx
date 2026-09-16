@@ -1,5 +1,5 @@
 import React from 'react'
-import { LANGS, t, type Lang } from '../i18n.js'
+import { LANGS, t, type I18nKey, type Lang } from '../i18n.js'
 import { Box, Text } from '../ui.js'
 import { Pane } from './design-system/Pane.js'
 import { Select } from './Select.js'
@@ -31,8 +31,8 @@ export function LangPicker({
         <Select
           options={LANGS.map(lang => ({
             value: lang,
-            label: lang === 'zh' ? '中文' : 'English',
-            description: t(lang === 'zh' ? 'lang-zh-desc' : 'lang-en-desc'),
+            label: { zh: '中文', en: 'English', ru: 'Русский' }[lang],
+            description: t(({ zh: 'lang-zh-desc', en: 'lang-en-desc', ru: 'lang-ru-desc' } satisfies Record<Lang, I18nKey>)[lang]),
           }))}
           focusIndex={focusIndex}
           selectedValue={currentLang}

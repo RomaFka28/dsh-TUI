@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, Text, useInput, ScrollBox, type ScrollBoxHandle, useTerminalSize } from '../ui.js'
 import { getLang, t } from '../i18n.js'
 import { isPlainReturnInput } from '../utils/modifiers.js'
-import { TIPS, TIP_GROUP_LABELS, type TipGroup } from '../tips.js'
+import { TIPS, TIP_GROUP_LABELS, tipText, type TipGroup } from '../tips.js'
 
 const GROUP_ORDER: readonly TipGroup[] = ['keys', 'commands', 'workflow', 'display', 'pitfalls']
 
@@ -49,12 +49,12 @@ export function TipsPanel({ onClose }: { onClose: () => void }): React.ReactNode
             {GROUP_ORDER.map(group => (
               <Box key={group} flexDirection="column" marginBottom={1}>
                 <Text bold color="accent">
-                  {lang === 'zh' ? TIP_GROUP_LABELS[group].zh : TIP_GROUP_LABELS[group].en}
+                  {TIP_GROUP_LABELS[group][lang]}
                 </Text>
                 {TIPS.filter(tip => tip.group === group).map(tip => (
                   <Text key={tip.id} dimColor>
                     {'  · '}
-                    {lang === 'zh' ? tip.zh : tip.en}
+                    {tipText(tip, lang)}
                   </Text>
                 ))}
               </Box>

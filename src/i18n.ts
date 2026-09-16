@@ -587,6 +587,7 @@ const dict = {
   'logo-tagline': { zh: '探索未至之境！', en: 'Explore the uncharted!' , ru: 'Исследуйте неизведанное!'},
   'logo-tip-prefix': { zh: '提示：', en: 'Tip: ' , ru: 'Совет: '},
   'logo-tip-more': { zh: '更多技巧', en: 'more tips' , ru: 'больше советов'},
+  'logo-effort-label': { zh: ' · {{tier}} effort', en: ' · {{tier}} effort', ru: ' · усилие: {{tier}}' },
   // Upstream-drift notice (merged one-liner under the tip; copy explains
   // the problem AND the fix — the command pins the validated line).
   'logo-drift-newer': {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { getLang, t as tr, tOr } from '../i18n.js'
-import { pickRandomTip, type Tip } from '../tips.js'
+import { pickRandomTip, tipText, type Tip } from '../tips.js'
 import { upstreamDriftSummary, UPSTREAM_VALIDATED_VERSION, type UpstreamDriftSummary } from '../dsh-adapter/contract.js'
 import { readFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
@@ -318,14 +318,14 @@ export function LogoV2({
           ))}
           <Text wrap="truncate-end">
             {model}
-            {effort !== undefined && <Text dimColor>{' · ' + capitalize(effort) + ' effort'}</Text>}
+            {effort !== undefined && <Text dimColor>{tr('logo-effort-label', { tier: capitalize(effort) })}</Text>}
           </Text>
           <Text dimColor wrap="truncate-end">
             {cwd}
           </Text>
           <Text wrap="truncate-end">
             <Text dimColor>{tr('logo-tip-prefix')}</Text>
-            {getLang() === 'zh' ? randomTip.zh : randomTip.en}
+            {tipText(randomTip, getLang())}
             <Text dimColor>{' · /tips ' + tr('logo-tip-more')}</Text>
           </Text>
           {driftLine != null && (

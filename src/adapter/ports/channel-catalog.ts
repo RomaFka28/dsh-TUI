@@ -29,7 +29,7 @@ export interface LocalCommand {
   skill?: boolean
 }
 
-export type LocalizedDescriptions = Readonly<Partial<Record<'zh' | 'en', string>>>
+export type LocalizedDescriptions = Readonly<Partial<Record<'zh' | 'en' | 'ru', string>>>
 
 /** A concrete completion row, including the text inserted by Tab/Enter. */
 export interface CommandCompletion extends LocalCommand {
